@@ -1,4 +1,4 @@
-# Kablugen 5toE
+# Kablugen
 Fix the Rep! – Proyecto Tesis 5toE
 
 Este proyecto fue desarrollado por Genaro Bringas, Benicio Zulueta, Luciano Quiroga y Valentín Olguín como parte de nuestra tesis escolar del curso 5toE.
