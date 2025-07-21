@@ -1,5 +1,10 @@
-# kablugen_5toE
-tesis de 5toE, de Genaro Bringas, Benicio  Zulueta, Luciano Quiroga, y Valentín Olguín
-este es nuestro proyecto, somos un grupo de estudiantes que se puso el objetivo de enseñar de una forma distinta, por medio de la interactividad. Es por eso que comenzaremos a realizar un juego educativo relacionado a la tecnica de los ejercicios en el gimnasio. 
+# Kablugen 5toE
+Fix the Rep! – Proyecto Tesis 5toE
 
-Kablugen studios.
+Este proyecto fue desarrollado por Genaro Bringas, Benicio Zulueta, Luciano Quiroga y Valentín Olguín como parte de nuestra tesis escolar del curso 5toE.
+
+Nuestro objetivo es enseñar de una forma distinta: a través de la interactividad. Por eso, desarrollamos un videojuego educativo que busca mejorar la técnica en los ejercicios de gimnasio, ayudando a los jugadores a identificar errores comunes y corregirlos en un entorno inmersivo.
+
+Hecho con dedicación por estudiantes comprometidos con el aprendizaje y la innovación.
+
+Kablugen Studios
