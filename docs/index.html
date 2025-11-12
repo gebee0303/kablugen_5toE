@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kablugen Studios — Inicio</title>
+  <!-- Carga de estilos (el ?v=3 fuerza recarga) -->
+  <link rel="stylesheet" href="./style.css?v=3">
+</head>
+<body class="fade-in" data-page="index">
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" aria-label="Kablugen Studios">
+      <img src="icons/kablugen_white.png" alt="Kablugen logo">
+      <div class="brand">
+        <span class="kablugen">KABLUGEN</span>
+        <small>STUDIOS</small>
+      </div>
+    </a>
+
+    <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+
+    <nav>
+      <ul>
+        <li><a data-nav class="is-active" href="index.html">Inicio</a></li>
+        <li><a data-nav href="producto.html">Producto</a></li>
+        <li><a data-nav href="filosofia.html">Filosofía</a></li>
+        <li><a data-nav href="cofundadores.html">Cofundadores</a></li>
+        <li><a data-nav href="acerca.html">Acerca de nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main>
+
+    <!-- HERO INICIAL — negro con halo azul y “¿Quiénes somos?” -->
+    <section class="hero hero-black">
+      <div class="hero-content">
+        <h1>¿Quiénes somos?</h1>
+        <p>
+          Somos <strong>Kablugen Studios</strong>, un estudio que combina tecnología, aprendizaje y diseño para
+          transformar la educación a través del juego.
+        </p>
+      </div>
+    </section>
+
+    <!-- FILOSOFÍA — 50/50 texto izq + escudo der -->
+    <section class="split-phi">
+      <div class="phi-left">
+        <h2>Filosofía</h2>
+        <p>
+         En Kablugen creemos que aprender también puede ser un acto creativo.
+Nuestra filosofía combina conocimiento y juego para transformar la educación en una experiencia viva, accesible y significativa.
+Creamos desde la colaboración, la innovación y la empatía, buscando que cada proyecto inspire, motive y enseñe con propósito.
+        </p>
+        <a class="btn" data-nav href="filosofia.html">Conocer nuestra filosofía</a>
+      </div>
+      <div class="phi-right">
+        <img src="icons/isotipo_kablugen.png" alt="Escudo Kablugen">
+      </div>
+    </section>
+
+    <!-- HERO PRODUCTO — logo estático, copy a la izquierda centrado -->
+    <section class="product-hero" aria-label="Producto: Fix the Rep">
+      <div class="product-copy">
+        <h2>Nuestro producto: Fix the Rep</h2>
+        <p>
+          Fix The Rep es un videojuego educativo centrado en la técnica del movimiento. El jugador corrige, ajusta y progresa mientras la técnica se convierte en juego.
+        </p>
+        <a class="btn" data-nav href="producto.html">Conocer más</a>
+      </div>
+    </section>
+
+   <section class="section section-alt cofundadores-section">
+  <div class="cof-container">
+    <!-- Imagen izquierda — espejada -->
+    <img src="assets/kablugen_mirrored_3.png" alt="Figura izquierda" class="cof-img cof-left">
+    <!-- Texto central -->
+    <div class="cof-center">
+      <h2>¿Quiénes están detrás de este proyecto?</h2>
+      <p>Las ideas no avanzan solas.
+Este es el equipo que les da forma, propósito y movimiento.</p>
+      <a class="btn" data-nav href="cofundadores.html">Conocer al equipo</a>
+    </div>
+    <!-- Imagen derecha — normal -->
+    <img src="assets/kablugen_3.png" alt="Figura derecha" class="cof-img cof-right">
+  </div>
+</section>
+
+
+
+    <!-- ACERCA — cierre sobrio, frío, elegante -->
+    <section class="about-wrap">
+      <div class="about-intro">
+        <h2>Acerca de nosotros</h2>
+        <p>
+          Las grandes historias no comienzan con certezas, sino con una intuición.
+La nuestra surgió al conectar lo que sabíamos con lo que queríamos aprender.
+Desde entonces, cada paso que damos intenta responder la misma pregunta:
+¿cómo transformar el conocimiento en algo que deje huella?
+
+      <div class="about-grid">
+        <article class="about-card">
+          <h3>¿Cómo comenzó Kablugen Studios?</h3>
+          <p>Toda historia tiene un punto de partida.</p>
+        </article>
+        <article class="about-card">
+          <h3>¿Por qué hacemos lo que hacemos?</h3>
+          <p>El propósito que impulsa todo lo que diseñamos.</p>
+        </article>
+        <article class="about-card">
+          <h3>¿Qué proyectamos hacia adelante?</h3>
+          <p>Hacia dónde se dirige la evolución de este trabajo.</p>
+        </article>
+      </div>
+
+      <div class="about-cta">
+        <a class="btn" data-nav href="acerca.html">Leer más</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Kablugen Studios 2025 — Todos los derechos reservados</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

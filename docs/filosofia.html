@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Filosofía — Kablugen Studios</title>
+
+  <!-- =================== ESTILOS PROPIOS (aislados) =================== -->
+  <style>
+    :root{
+      --dark:#0c0932;
+      --gold:#c29e6e;
+      --white:#ffffff;
+      --shadow:0 12px 40px rgba(0,0,0,.18);
+    }
+    /* Reset base mínimo */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Times New Roman", Times, serif;
+      color:var(--dark);
+      background:#fff;
+      overflow-x:hidden;
+    }
+
+    /* ===== Header consistente con el resto del sitio ===== */
+    header{
+      position:fixed; inset:0 0 auto 0; height:100px; z-index:30;
+      background:var(--dark);
+      border-bottom:1px solid rgba(194,158,110,.3);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px clamp(18px,4vw,40px);
+    }
+    header .logo{display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff}
+    header .logo img{height:80px; width:auto; display:block}
+    header .brand{line-height:1}
+    header .brand .kablugen{letter-spacing:1px; font-weight:700}
+    header .brand small{color:var(--gold); letter-spacing:1px}
+
+    nav ul{list-style:none; display:flex; gap:26px}
+    nav a{color:#fff; text-decoration:none; letter-spacing:.3px}
+    nav a:hover, nav a.is-active{color:var(--gold)}
+
+    main{padding-top:110px}
+
+    /* =================== HERO CINEMÁTICO =================== */
+    .hero-phi{
+      position:relative; min-height:88vh; display:grid; place-items:center; overflow:hidden;
+      background:#000;
+      isolation:isolate;
+    }
+    /* patrón tecnológico sutil */
+    .hero-phi::before{
+      content:""; position:absolute; inset:-20% -10% -10% -10%;
+      background:
+        radial-gradient(1000px 600px at 120% -10%, rgba(194,158,110,.12), transparent 60%),
+        radial-gradient(900px 600px at -20% 110%, rgba(12,9,50,.18), transparent 55%),
+        conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,.05), transparent 25% 50%, rgba(255,255,255,.05) 75% 100%),
+        #0c0932;
+      filter: saturate(110%);
+      z-index:0;
+    }
+    /* cintas doradas diagonales */
+    .hero-phi::after{
+      content:""; position:absolute; inset:0;
+      background:
+        linear-gradient(110deg, transparent 35%, rgba(194,158,110,.08) 36%, transparent 37%),
+        linear-gradient(110deg, transparent 58%, rgba(194,158,110,.10) 59%, transparent 60%);
+      opacity:.8; z-index:0;
+    }
+    .hero-phi__inner{
+      text-align:center; color:#fff; z-index:1; padding:0 8%;
+    }
+    .hero-phi__kicker{
+      display:inline-block; color:#fff; opacity:.9; letter-spacing:.18em;
+      font-size:12px; text-transform:uppercase; margin-bottom:10px;
+    }
+    .hero-phi h1{
+      font-size: clamp(42px, 8vw, 92px);
+      color:var(--gold);
+      letter-spacing:.04em; line-height:1.0;
+    }
+    .hero-phi .quote{
+      margin-top:14px; color:#e9e9e9; font-size: clamp(16px, 1.4vw, 22px);
+    }
+
+    /* subrayado dorado animado bajo H1 */
+    .hero-phi .gold-underline{
+      margin:14px auto 0; width:min(420px, 70vw); height:2px; position:relative;
+      background:linear-gradient(90deg, transparent, rgba(194,158,110,.9), transparent);
+      overflow:hidden;
+    }
+    .hero-phi .gold-underline::after{
+      content:""; position:absolute; left:-30%; top:-4px; width:30%; height:10px;
+      background:radial-gradient(10px 10px at 50% 50%, #fff8ee, transparent 60%);
+      animation:glow 2.2s ease-in-out infinite;
+      opacity:.75;
+    }
+    @keyframes glow{
+      0%{left:-30%} 50%{left:100%} 100%{left:100%}
+    }
+
+    /* =================== IDENTIDAD (editorial) =================== */
+    .block{
+      padding: clamp(60px, 8vw, 120px) 8%;
+    }
+
+    .identity{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap: clamp(24px, 5vw, 60px);
+      align-items:start;
+    }
+    .eyebrow{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#6b6b6b; margin-bottom:8px; }
+    .identity h2{ font-size: clamp(28px, 3.6vw, 46px); margin-bottom:10px; color:var(--dark); }
+    .identity p{ font-size:18px; color:#333; line-height:1.75; margin-bottom:12px; }
+    .identity .pull{
+      position:relative; padding:18px 18px 18px 20px; color:#4a3b27; background:#fff8ee;
+      border:1px solid rgba(194,158,110,.35); border-radius:12px; box-shadow:var(--shadow);
+      font-size:17px;
+    }
+    .identity .iso-wrap{
+      align-self:stretch; display:grid; place-items:center; position:relative;
+      background:
+        radial-gradient(500px 300px at 80% 10%, rgba(194,158,110,.10), transparent 60%),
+        linear-gradient(180deg, #faf8f5, #fff);
+      border:1px solid rgba(12,9,50,.08);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+    .identity .iso-wrap img{ width:min(420px, 75%); height:auto; opacity:.9; }
+
+    /* =================== FILOSOFÍA (bloque inmersivo) =================== */
+    .phi-core{
+  position:relative; overflow:hidden; color:#fff; background:var(--dark);
+  clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
+}
+.phi-core__grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 4vw, 60px);
+  align-items:center;
+}
+.phi-core .left h2{ font-size: clamp(28px, 3.6vw, 46px); color:var(--gold); margin-bottom:10px; }
+.phi-core .left p{ color:#efefef; margin-bottom:12px; line-height:1.8; }
+
+.phi-core .right{
+  position:relative; min-height: 380px; border-radius:16px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(194,158,110,.12), transparent 60%),
+    radial-gradient(1000px 700px at 110% 10%, rgba(255,255,255,.05), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+}
+
+/* 👉 AÑADÍ ESTE BLOQUE DEBAJO */
+.phi-core .right img {
+  width: 100%;
+  max-width: 400px;    /* límite máximo de ancho */
+  height: auto;
+  object-fit: contain; /* evita deformación */
+  display: block;
+  margin: 0 auto;
+}
+
+/* (no toques este) */
+.phi-core .right::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(110deg, rgba(255,255,255,.06) 0%, transparent 25% 75%, rgba(255,255,255,.06) 100%);
+  mix-blend-mode:screen;
+}
+
+    /* =================== MISIÓN / VISIÓN (paneles gemelos) =================== */
+    .mv{
+      display:grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 28px);
+    }
+    .mv .panel{
+      background:#fff; border:1px solid rgba(12,9,50,.12); border-radius:16px; box-shadow:var(--shadow);
+      padding:clamp(20px,3vw,28px);
+      position:relative; overflow:hidden;
+    }
+    .mv .panel::before{
+      content:""; position:absolute; inset:-30% -10% auto -10%; height:60%;
+      background: radial-gradient(600px 260px at 20% 20%, rgba(194,158,110,.14), transparent 60%);
+    }
+    .mv h3{ font-size: clamp(22px, 2.6vw, 30px); color:var(--dark); margin-bottom:8px; }
+    .mv p{ color:#444; line-height:1.75; font-size:18px; }
+
+    /* =================== VALORES (tarjetas en grid) =================== */
+    .values{
+      background:#faf8f5;
+    }
+    .values h2{ font-size: clamp(28px, 3.6vw, 46px); color:var(--dark); margin-bottom:14px; text-align:center; }
+    .values-grid{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px; margin-top:8px;
+    }
+    .value{
+      background:#fff; border:1px solid rgba(12,9,50,.10); border-radius:14px; box-shadow:var(--shadow);
+      padding:18px 18px 20px; text-align:left;
+    }
+    .value h4{ color:var(--dark); margin-bottom:6px; font-size:18px; }
+    .value p{ color:#555; line-height:1.7; }
+
+    /* =================== CULTURA (timeline elástico) =================== */
+    .culture{
+      position:relative; overflow:hidden;
+    }
+    .culture h2{ font-size: clamp(28px, 3.6vw, 46px); color:var(--dark); margin-bottom:14px; text-align:center; }
+    .culture-rail{
+      margin-top:16px; display:grid; grid-template-columns: 1.2fr 1fr;
+      gap: clamp(22px, 4vw, 40px); align-items:start;
+    }
+    .culture .text p{ color:#333; line-height:1.85; font-size:18px; margin-bottom:12px; }
+    .culture .card{
+      background:#fff; border:1px solid rgba(12,9,50,.10); border-radius:16px; box-shadow:var(--shadow);
+      padding:20px;
+    }
+    .culture .note{
+      font-size:16px; color:#6b6b6b; border-left:3px solid var(--gold);
+      padding-left:12px; margin-top:10px;
+    }
+
+    /* =================== CTA FINAL =================== */
+    .phi-cta{
+      text-align:center; color:#fff; background:var(--dark);
+      padding: clamp(70px, 8vw, 120px) 8%;
+      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+    }
+    .phi-cta h2{ color:var(--gold); font-size: clamp(26px, 3vw, 40px); margin-bottom:10px; }
+    .phi-cta p{ color:#e9e9e9; margin-bottom:16px; }
+    .btn{
+      display:inline-block; background:var(--gold); color:#fff;
+      padding:10px 24px; border-radius:26px; text-decoration:none; font-weight:700;
+      transition:transform .2s ease, background .25s ease;
+    }
+    .btn:hover{ transform:translateY(-2px); background:#dcb786; }
+
+    /* =================== RESPONSIVE =================== */
+    @media (max-width: 1080px){
+      .identity{ grid-template-columns: 1fr; }
+      .phi-core__grid{ grid-template-columns: 1fr; }
+      .mv{ grid-template-columns: 1fr; }
+      .culture-rail{ grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body class="fade-in" data-page="filosofia">
+  <!-- HEADER -->
+ <header>
+    <a href="index.html" class="logo" aria-label="Kablugen Studios">
+      <img src="icons/kablugen_white.png" alt="Kablugen logo">
+      <div class="brand">
+        <span class="kablugen">KABLUGEN</span>
+        <small>STUDIOS</small>
+      </div>
+    </a>
+
+  
+
+    <nav>
+      <ul>
+        <li><a data-nav href="index.html">Inicio</a></li>
+        <li><a data-nav href="producto.html">Producto</a></li>
+        <li><a data-nav class="is-active" href="filosofia.html">Filosofía</a></li>
+        <li><a data-nav href="cofundadores.html">Cofundadores</a></li>
+        <li><a data-nav href="acerca.html">Acerca de nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- =================== HERO =================== -->
+    <section class="hero-phi">
+      <div class="hero-phi__inner">
+        <span class="hero-phi__kicker">Kablugen Studios</span>
+        <h1>Filosofía</h1>
+        <div class="gold-underline" aria-hidden="true"></div>
+        <p class="quote">“Porque para nosotros, jugar es descubrir, y descubrir es aprender.”</p>
+      </div>
+    </section>
+
+    <!-- =================== IDENTIDAD =================== -->
+    <section class="block identity">
+      <div>
+        <div class="eyebrow">Nuestra identidad corporativa</div>
+        <h2>Nuestra identidad corporativa</h2>
+
+        <p>Nuestra identidad corporativa se funda en una combinación sólida de valores compartidos y una gran dedicación a cada proyecto. Creemos firmemente que la manera más efectiva de enseñar no es solo transmitir información, sino hacerlo de un modo dinámico, entretenido y profundamente práctico. Por eso, cada uno de nuestros juegos está diseñado para convertir conceptos complejos en experiencias, tales como actividades interactivas, retos motivadores y narrativas que acompañan el proceso de aprendizaje de principio a fin.</p>
+
+        <p>Además, nuestro espíritu colaborativo es el motor que impulsa cada paso: fomentamos un ambiente de confianza y respeto mutuo, donde las ideas fluyen libremente y cada aportación es valorada. Esa cohesión interna no solo fortalece nuestra creatividad, sino que también garantiza que cada proyecto avance con eficacia. En definitiva, nuestra identidad corporativa se traduce en un compromiso continuo por ofrecer soluciones educativas innovadoras, eficaces y, sobre todo, divertidas.</p>
+
+        <div></div> </div>
+      </div>
+
+      <div class="iso-wrap">
+        <!-- Si querés, reemplazá por una textura o foto conceptual -->
+        <img src="assets/kablugen_3.png" alt="filósofo">
+      </div>
+    </section>
+
+    <!-- =================== FILOSOFÍA CORPORATIVA =================== -->
+    <section class="block phi-core">
+      <div class="phi-core__grid">
+        <div class="left">
+          <div class="eyebrow" style="color:#dcd7ff">Filosofía corporativa</div>
+          <h2>Filosofía corporativa</h2>
+
+          <p>En Kablugen, nuestra filosofía se fundamenta en la creatividad, la colaboración y la pasión por transformar la educación. Nos guía el deseo de educar de manera diferente, combinando conocimiento y juego como herramientas para aprender disfrutando.</p>
+
+          <p>Aunque somos un equipo joven, compartimos una fuerte convicción por hacer las cosas con compromiso, respeto y apertura, manteniendo siempre viva la curiosidad y el entusiasmo por innovar.</p>
+
+          <p>Creemos en la colaboración como motor de crecimiento, construyendo juntos una forma de trabajo dinámica, inclusiva y centrada en el desarrollo colectivo, donde cada integrante aporta desde su autenticidad.</p>
+
+          <p>Esta filosofía no solo define lo que hacemos, sino cómo lo hacemos: con empatía, dedicación y la intención genuina de generar un impacto positivo en quienes se acercan a nuestros proyectos.</p>
+
+          <p>Nuestro enfoque busca ofrecer experiencias significativas y accesibles, que aunque nacen en una pantalla, van más allá de ella: son puentes hacia el conocimiento, espacios donde el deseo de jugar se convierte, casi naturalmente, en una oportunidad para aprender.</p>
+
+          <p><em>Porque para nosotros, jugar es descubrir, y descubrir es aprender.</em></p>
+        </div>
+        <div class="right" aria-hidden="true">
+              <img src="icons/filosofía.png" alt="Isotipo Kablugen">
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== MISIÓN / VISIÓN =================== -->
+    <section class="block mv">
+      <article class="panel">
+        <h3>Misión corporativa</h3>
+        <p>Kablugen es un microemprendimiento de desarrollo de software que se dedica a desarrollar videojuegos educativos que combinan entretenimiento y aprendizaje, ofreciendo experiencias interactivas que faciliten la incorporación del conocimiento de manera dinámica y atractiva. Nuestro objetivo es transformar la educación tradicional, haciéndola accesible, efectiva y cercana a las nuevas generaciones.</p>
+      </article>
+
+      <article class="panel">
+        <h3>Visión corporativa</h3>
+        <p>Aspiramos a posicionarnos como un estudio líder en el ámbito de los videojuegos educativos, reconocidos por nuestra capacidad de innovar en la forma en que se aprende. Soñamos con un futuro donde la educación y el juego no sean caminos separados, sino una sola experiencia que inspire, motive y enseñe.</p>
+      </article>
+    </section>
+
+    <!-- =================== VALORES =================== -->
+    <section class="block values">
+      <h2>Valores centrales corporativos</h2>
+      <div class="values-grid">
+        <article class="value">
+          <h4>Creatividad profesional</h4>
+          <p>Diseñamos cada juego con una visión única, que combina contenido educativo de calidad con mecánicas divertidas y envolventes.</p>
+        </article>
+        <article class="value">
+          <h4>Trabajo en equipo</h4>
+          <p>Fomentamos una cultura de colaboración interna constante, donde cada integrante aporta al desarrollo y mejora de nuestras ideas.</p>
+        </article>
+        <article class="value">
+          <h4>Innovación continua</h4>
+          <p>Buscamos nuevas formas de aprender jugando, manteniéndonos actualizados con las tecnologías y metodologías más efectivas.</p>
+        </article>
+        <article class="value">
+          <h4>Empatía y comunicación</h4>
+          <p>Nos relacionamos con colaboradores y socios con respeto, claridad y apertura, entendiendo sus planteos y expectativas.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =================== CULTURA =================== -->
+    <section class="block culture">
+      <h2>Cultura corporativa</h2>
+      
+        <div class="text">
+          <p>Sobre nuestro recorrido y el tiempo que llevamos, no hay mucho que contar todavía, pero sí mucho por construir, imaginar y compartir. Hemos surgido hace relativamente poco, pero desde entonces nos hemos enfocado con entusiasmo y compromiso en darle forma a una idea clara y poderosa: transformar la manera en que las personas aprenden, haciéndolo a través de experiencias dinámicas, innovadoras y motivadoras.
+          Sabemos que estamos dando nuestros primeros pasos, pero eso no nos limita; al contrario, nos impulsa. Creemos firmemente que el cambio no está relacionado al tiempo que llevás, sino la claridad con la que proyectas y plasmás tu propósito. Por eso, desde el primer momento, hemos estado planificando algo sólido, repleto de proyectos que mezclan el entretenimiento con el aprendizaje, la diversión y el crecimiento personal.
+          No se trata solo de crear juegos o actividades visualmente atractivas: queremos generar vivencias que conecten, que dejen huella, que enseñen casi sin que el jugador lo note, sumergido en una experiencia que lo invita a descubrir por sí mismo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== CTA FINAL =================== -->
+    <section class="phi-cta">
+      <h2>Volver al inicio</h2>
+      <a class="btn" href="index.html">Inicio</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--dark); color:#fff; text-align:center; padding:26px 16px; border-top:1px solid rgba(194,158,110,.3)">
+    <p>Kablugen Studios 2025 — Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
