@@ -2129,3 +2129,9 @@ nav a{color:var(--white); text-decoration:none}
   justify-content: center;
   text-align: center;
 }
+/* --- Quitar isotipo del HERO de Producto (limpia totalmente el espacio) --- */
+.product-hero::before{
+    content: none !important;
+    background: none !important;
+    background-image: none !important;
+}
