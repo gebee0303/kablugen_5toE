@@ -2153,3 +2153,18 @@ body > header + *{
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+/* === FIX: siluetas detrás del texto en "¿Quiénes están detrás de este proyecto?" === */
+
+.cof-container{
+  position: relative;              /* referencia para los absolutos */
+}
+
+.cof-center{
+  position: relative;
+  z-index: 2;                      /* el texto SIEMPRE por encima */
+}
+
+.cof-img{
+  position: absolute;
+  z-index: 0 !important;           /* fuerza que queden por debajo del texto */
+}
