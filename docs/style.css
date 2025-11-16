@@ -2135,3 +2135,21 @@ nav a{color:var(--white); text-decoration:none}
     background: none !important;
     background-image: none !important;
 }
+/* === FIX GLOBAL: eliminar espacio entre header y hero === */
+
+/* Por las dudas, que el body no tenga margen */
+body{
+  margin: 0;
+}
+
+/* Nos aseguramos de que el header no empuje nada hacia abajo */
+header{
+  margin: 0;
+}
+
+/* Cualquier cosa que venga justo después del header
+   NO va a tener margen ni padding arriba */
+body > header + *{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}

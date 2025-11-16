@@ -5,248 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Filosofía — Kablugen Studios</title>
 
-  <!-- =================== ESTILOS PROPIOS (aislados) =================== -->
-  <style>
-    :root{
-      --dark:#0c0932;
-      --gold:#c29e6e;
-      --white:#ffffff;
-      --shadow:0 12px 40px rgba(0,0,0,.18);
-    }
-    /* Reset base mínimo */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:"Times New Roman", Times, serif;
-      color:var(--dark);
-      background:#fff;
-      overflow-x:hidden;
-    }
-
-    /* ===== Header consistente con el resto del sitio ===== */
-    header{
-      position:fixed; inset:0 0 auto 0; height:100px; z-index:30;
-      background:var(--dark);
-      border-bottom:1px solid rgba(194,158,110,.3);
-      display:flex; align-items:center; justify-content:space-between;
-      padding:12px clamp(18px,4vw,40px);
-    }
-    header .logo{display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff}
-    header .logo img{height:80px; width:auto; display:block}
-    header .brand{line-height:1}
-    header .brand .kablugen{letter-spacing:1px; font-weight:700}
-    header .brand small{color:var(--gold); letter-spacing:1px}
-
-    nav ul{list-style:none; display:flex; gap:26px}
-    nav a{color:#fff; text-decoration:none; letter-spacing:.3px}
-    nav a:hover, nav a.is-active{color:var(--gold)}
-
-    main{padding-top:110px}
-
-    /* =================== HERO CINEMÁTICO =================== */
-    .hero-phi{
-      position:relative; min-height:88vh; display:grid; place-items:center; overflow:hidden;
-      background:#000;
-      isolation:isolate;
-    }
-    /* patrón tecnológico sutil */
-    .hero-phi::before{
-      content:""; position:absolute; inset:-20% -10% -10% -10%;
-      background:
-        radial-gradient(1000px 600px at 120% -10%, rgba(194,158,110,.12), transparent 60%),
-        radial-gradient(900px 600px at -20% 110%, rgba(12,9,50,.18), transparent 55%),
-        conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,.05), transparent 25% 50%, rgba(255,255,255,.05) 75% 100%),
-        #0c0932;
-      filter: saturate(110%);
-      z-index:0;
-    }
-    /* cintas doradas diagonales */
-    .hero-phi::after{
-      content:""; position:absolute; inset:0;
-      background:
-        linear-gradient(110deg, transparent 35%, rgba(194,158,110,.08) 36%, transparent 37%),
-        linear-gradient(110deg, transparent 58%, rgba(194,158,110,.10) 59%, transparent 60%);
-      opacity:.8; z-index:0;
-    }
-    .hero-phi__inner{
-      text-align:center; color:#fff; z-index:1; padding:0 8%;
-    }
-    .hero-phi__kicker{
-      display:inline-block; color:#fff; opacity:.9; letter-spacing:.18em;
-      font-size:12px; text-transform:uppercase; margin-bottom:10px;
-    }
-    .hero-phi h1{
-      font-size: clamp(42px, 8vw, 92px);
-      color:var(--gold);
-      letter-spacing:.04em; line-height:1.0;
-    }
-    .hero-phi .quote{
-      margin-top:14px; color:#e9e9e9; font-size: clamp(16px, 1.4vw, 22px);
-    }
-
-    /* subrayado dorado animado bajo H1 */
-    .hero-phi .gold-underline{
-      margin:14px auto 0; width:min(420px, 70vw); height:2px; position:relative;
-      background:linear-gradient(90deg, transparent, rgba(194,158,110,.9), transparent);
-      overflow:hidden;
-    }
-    .hero-phi .gold-underline::after{
-      content:""; position:absolute; left:-30%; top:-4px; width:30%; height:10px;
-      background:radial-gradient(10px 10px at 50% 50%, #fff8ee, transparent 60%);
-      animation:glow 2.2s ease-in-out infinite;
-      opacity:.75;
-    }
-    @keyframes glow{
-      0%{left:-30%} 50%{left:100%} 100%{left:100%}
-    }
-
-    /* =================== IDENTIDAD (editorial) =================== */
-    .block{
-      padding: clamp(60px, 8vw, 120px) 8%;
-    }
-
-    .identity{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap: clamp(24px, 5vw, 60px);
-      align-items:start;
-    }
-    .eyebrow{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#6b6b6b; margin-bottom:8px; }
-    .identity h2{ font-size: clamp(28px, 3.6vw, 46px); margin-bottom:10px; color:var(--dark); }
-    .identity p{ font-size:18px; color:#333; line-height:1.75; margin-bottom:12px; }
-    .identity .pull{
-      position:relative; padding:18px 18px 18px 20px; color:#4a3b27; background:#fff8ee;
-      border:1px solid rgba(194,158,110,.35); border-radius:12px; box-shadow:var(--shadow);
-      font-size:17px;
-    }
-    .identity .iso-wrap{
-      align-self:stretch; display:grid; place-items:center; position:relative;
-      background:
-        radial-gradient(500px 300px at 80% 10%, rgba(194,158,110,.10), transparent 60%),
-        linear-gradient(180deg, #faf8f5, #fff);
-      border:1px solid rgba(12,9,50,.08);
-      border-radius:16px;
-      box-shadow:var(--shadow);
-      padding:24px;
-    }
-    .identity .iso-wrap img{ width:min(420px, 75%); height:auto; opacity:.9; }
-
-    /* =================== FILOSOFÍA (bloque inmersivo) =================== */
-    .phi-core{
-  position:relative; overflow:hidden; color:#fff; background:var(--dark);
-  clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
-}
-.phi-core__grid{
-  display:grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 4vw, 60px);
-  align-items:center;
-}
-.phi-core .left h2{ font-size: clamp(28px, 3.6vw, 46px); color:var(--gold); margin-bottom:10px; }
-.phi-core .left p{ color:#efefef; margin-bottom:12px; line-height:1.8; }
-
-.phi-core .right{
-  position:relative; min-height: 380px; border-radius:16px; overflow:hidden;
-  border:1px solid rgba(255,255,255,.08);
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(194,158,110,.12), transparent 60%),
-    radial-gradient(1000px 700px at 110% 10%, rgba(255,255,255,.05), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
-}
-
-/* 👉 AÑADÍ ESTE BLOQUE DEBAJO */
-.phi-core .right img {
-  width: 100%;
-  max-width: 400px;    /* límite máximo de ancho */
-  height: auto;
-  object-fit: contain; /* evita deformación */
-  display: block;
-  margin: 0 auto;
-}
-
-/* (no toques este) */
-.phi-core .right::after{
-  content:""; position:absolute; inset:0;
-  background:
-    linear-gradient(110deg, rgba(255,255,255,.06) 0%, transparent 25% 75%, rgba(255,255,255,.06) 100%);
-  mix-blend-mode:screen;
-}
-
-    /* =================== MISIÓN / VISIÓN (paneles gemelos) =================== */
-    .mv{
-      display:grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 28px);
-    }
-    .mv .panel{
-      background:#fff; border:1px solid rgba(12,9,50,.12); border-radius:16px; box-shadow:var(--shadow);
-      padding:clamp(20px,3vw,28px);
-      position:relative; overflow:hidden;
-    }
-    .mv .panel::before{
-      content:""; position:absolute; inset:-30% -10% auto -10%; height:60%;
-      background: radial-gradient(600px 260px at 20% 20%, rgba(194,158,110,.14), transparent 60%);
-    }
-    .mv h3{ font-size: clamp(22px, 2.6vw, 30px); color:var(--dark); margin-bottom:8px; }
-    .mv p{ color:#444; line-height:1.75; font-size:18px; }
-
-    /* =================== VALORES (tarjetas en grid) =================== */
-    .values{
-      background:#faf8f5;
-    }
-    .values h2{ font-size: clamp(28px, 3.6vw, 46px); color:var(--dark); margin-bottom:14px; text-align:center; }
-    .values-grid{
-      display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap:18px; margin-top:8px;
-    }
-    .value{
-      background:#fff; border:1px solid rgba(12,9,50,.10); border-radius:14px; box-shadow:var(--shadow);
-      padding:18px 18px 20px; text-align:left;
-    }
-    .value h4{ color:var(--dark); margin-bottom:6px; font-size:18px; }
-    .value p{ color:#555; line-height:1.7; }
-
-    /* =================== CULTURA (timeline elástico) =================== */
-    .culture{
-      position:relative; overflow:hidden;
-    }
-    .culture h2{ font-size: clamp(28px, 3.6vw, 46px); color:var(--dark); margin-bottom:14px; text-align:center; }
-    .culture-rail{
-      margin-top:16px; display:grid; grid-template-columns: 1.2fr 1fr;
-      gap: clamp(22px, 4vw, 40px); align-items:start;
-    }
-    .culture .text p{ color:#333; line-height:1.85; font-size:18px; margin-bottom:12px; }
-    .culture .card{
-      background:#fff; border:1px solid rgba(12,9,50,.10); border-radius:16px; box-shadow:var(--shadow);
-      padding:20px;
-    }
-    .culture .note{
-      font-size:16px; color:#6b6b6b; border-left:3px solid var(--gold);
-      padding-left:12px; margin-top:10px;
-    }
-
-    /* =================== CTA FINAL =================== */
-    .phi-cta{
-      text-align:center; color:#fff; background:var(--dark);
-      padding: clamp(70px, 8vw, 120px) 8%;
-      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
-    }
-    .phi-cta h2{ color:var(--gold); font-size: clamp(26px, 3vw, 40px); margin-bottom:10px; }
-    .phi-cta p{ color:#e9e9e9; margin-bottom:16px; }
-    .btn{
-      display:inline-block; background:var(--gold); color:#fff;
-      padding:10px 24px; border-radius:26px; text-decoration:none; font-weight:700;
-      transition:transform .2s ease, background .25s ease;
-    }
-    .btn:hover{ transform:translateY(-2px); background:#dcb786; }
-
-    /* =================== RESPONSIVE =================== */
-    @media (max-width: 1080px){
-      .identity{ grid-template-columns: 1fr; }
-      .phi-core__grid{ grid-template-columns: 1fr; }
-      .mv{ grid-template-columns: 1fr; }
-      .culture-rail{ grid-template-columns: 1fr; }
-    }
-
-  </style>
+  <!-- MISMO CSS GLOBAL QUE EL RESTO -->
+  <link rel="stylesheet" href="./style.css?v=3">
 </head>
+  <script src="script.js?v=3"></script>
+</body>
+</html>
+
 <body class="fade-in" data-page="filosofia">
-  <!-- HEADER -->
- <header>
+  <!-- HEADER IGUAL AL DE INDEX, SOLO CAMBIA EL is-active -->
+    <!-- HEADER -->
+  <header>
     <a href="index.html" class="logo" aria-label="Kablugen Studios">
       <img src="icons/kablugen_white.png" alt="Kablugen logo">
       <div class="brand">
@@ -267,6 +36,8 @@
       </ul>
     </nav>
   </header>
+
+
 
   <main>
 
